@@ -1,0 +1,22 @@
+The project is a web-based platform designed to enhance communication and engagement between the town administration and its citizens. The platform allows users to report problems or issues, view and discuss existing issues, and rate their importance. This enables the administration to prioritize and address the most pressing concerns of the community.
+
+Key features of the platform include:
+
+* A discussion forum where users can engage in conversations and share ideas
+* An issue tracker that allows users to report and follow the progress of issues
+* A categorization system to help organize and prioritize issues
+* The ability for users to upload photos and videos to support their reports
+* A notification system that enables users to subscribe to issues and receive updates
+* A profile system that showcases a user's contributions and participation
+* A news and announcements section where the administration can share updates and information
+* A search function to help users find specific issues or discussions
+* A feature for users to create and manage their own community groups and initiatives
+
+The platform also includes basic analytics to help the administration understand how the platform is being used and identify areas for improvement.
+
+Additionally, the platform features an AI-generated podcast that summarizes key issues and discussions, as chosen by the administration. This podcast provides an alternative way for citizens to stay informed about what's happening in their community.
+
+The platform is designed to be accessible through both web and mobile web browsers, making it easy for citizens to participate and engage with their community on-the-go.
+
+Overall, the project aims to increase citizen participation, improve communication between the administration and the public, and provide a more efficient and transparent way for issues to be reported and addressed. By providing a platform for citizens to voice their concerns and engage with their community, the project hopes to foster a more collaborative and responsive local government.<M-:>wq
+
