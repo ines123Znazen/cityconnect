@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion - Portail Communautaire</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="logo">
+      <strong>Portail Communautaire</strong>
+    </div>
+    <nav id="navbar">
+      <a href="index.html">Accueil</a>
+      <a href="signup.html">S'inscrire</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Se Connecter</h1>
+    <form id="login-form">
+      <label for="username">Nom d'utilisateur :</label>
+      <input type="text" id="username" required />
+
+      <label for="password">Mot de passe :</label>
+      <input type="password" id="password" required />
+
+      <button type="submit">Se connecter</button>
+    </form>
+
+    <p>Pas encore de compte ? <a href="signup.html">Créez-en un ici</a></p>
+  </div>
+
+  <!-- Link to JS file -->
+  <script src="js/login.js"></script>
+</body>
+
+</html>

@@ -1,142 +1,50 @@
-/* Base styles for the desktop version */
-
+/* General styling */
 body {
   margin: 0;
-  font-family: sans-serif;
-  background: #f5f7fa;
+  font-family: Arial, sans-serif;
+  background-color: #f4f7fa;
+  color: #333;
 }
 
 header {
   background-color: #007BFF;
   color: white;
-  padding: 1rem 2rem;
+  padding: 10px 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  flex-wrap: wrap;
 }
 
-nav {
-  display: flex;
-  justify-content: flex-end;
-  flex: 1;
-}
-
-nav a {
-  color: white;
-  margin-left: 1rem;
-  text-decoration: none;
+header .logo {
+  font-size: 24px;
   font-weight: bold;
 }
 
-nav #auth {
-  display: flex;
-  align-items: center;
+header nav a {
+  color: white;
+  text-decoration: none;
+  margin-left: 15px;
+  font-weight: bold;
 }
 
-nav #auth button {
-  background: #dc3545;
-  color: white;
-  border: none;
-  padding: 0.5rem 1rem;
-  margin-left: 1rem;
-  border-radius: 5px;
-  cursor: pointer;
+header nav a:hover {
+  text-decoration: underline;
 }
 
 .container {
-  max-width: 960px;
-  margin: auto;
-  padding: 2rem;
+  padding: 20px;
+  text-align: center;
 }
 
-.hero {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  margin-bottom: 2rem;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+button {
+  padding: 10px 20px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 16px;
 }
 
-.card {
-  background: white;
-  padding: 1rem;
-  border-radius: 8px;
-  margin-bottom: 1rem;
-  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
-}
-
-h2 {
-  margin-top: 2rem;
-  color: #333;
-}
-
-/* Mobile responsive design */
-
-@media (max-width: 768px) {
-  header {
-    padding: 1rem;
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav {
-    width: 100%;
-    justify-content: space-between;
-    margin-top: 1rem;
-  }
-
-  nav a {
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-  }
-
-  .container {
-    padding: 1rem;
-    max-width: 100%;
-  }
-
-  .hero {
-    padding: 1.5rem;
-  }
-
-  .card {
-    padding: 1rem;
-    margin-bottom: 1rem;
-  }
-
-  h2 {
-    font-size: 1.25rem;
-  }
-}
-
-/* Small screen adjustments (e.g., smartphones in portrait mode) */
-
-@media (max-width: 480px) {
-  nav {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  nav a {
-    margin-top: 0.5rem;
-    margin-left: 0;
-  }
-
-  header div {
-    font-size: 1.5rem;
-  }
-
-  .hero {
-    padding: 1rem;
-  }
-
-  .card {
-    padding: 0.75rem;
-    margin-bottom: 1rem;
-  }
-
-  h2 {
-    font-size: 1.1rem;
-  }
+button:hover {
+  background-color: #218838;
 }

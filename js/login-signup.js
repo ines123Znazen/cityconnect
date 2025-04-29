@@ -55,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
       users.push(newUser);
       localStorage.setItem('users', JSON.stringify(users));
       alert('Inscription réussie! Vous pouvez maintenant vous connecter.');
-      window.location.href = 'signinorup.html'; // Reload the page after signup
+      window.location.href = 'index.html';
     }
   });
 });
