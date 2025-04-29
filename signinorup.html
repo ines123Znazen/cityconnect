@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Connexion / Inscription - Portail Communautaire</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <header>
+    <div><strong>Portail Communautaire</strong></div>
+    <nav>
+      <a href="index.html">Accueil</a>
+      <a href="signinorup.html">Connexion / Inscription</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h2>Connexion ou Inscription</h2>
+
+    <div id="auth-forms">
+      <div class="form-container" id="login-form">
+        <h3>Connexion</h3>
+        <form id="login-form-element">
+          <label for="login-username">Nom d'utilisateur :</label>
+          <input type="text" id="login-username" required />
+
+          <label for="login-password">Mot de passe :</label>
+          <input type="password" id="login-password" required />
+
+          <button type="submit">Se connecter</button>
+        </form>
+        <p>Pas encore inscrit ? <a href="#" id="show-signup">S'inscrire ici</a></p>
+      </div>
+
+      <div class="form-container" id="signup-form" style="display: none;">
+        <h3>Inscription</h3>
+        <form id="signup-form-element">
+          <label for="signup-username">Nom d'utilisateur :</label>
+          <input type="text" id="signup-username" required />
+
+          <label for="signup-password">Mot de passe :</label>
+          <input type="password" id="signup-password" required />
+
+          <button type="submit">S'inscrire</button>
+        </form>
+        <p>Déjà un compte ? <a href="#" id="show-login">Se connecter ici</a></p>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script src="js/login-signup.js"></script>
+</body>
+
+</html>
