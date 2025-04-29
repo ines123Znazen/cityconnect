@@ -4,33 +4,115 @@
   <meta charset="UTF-8">
   <title>User Profile</title>
   <link rel="stylesheet" href="css/styles.css">
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
+    header, footer { background: #333; color: white; padding: 1em; text-align: center; }
+    main { padding: 2em; max-width: 900px; margin: auto; background: white; box-shadow: 0 0 10px rgba(0,0,0,0.1); border-radius: 8px; }
+    section { margin-bottom: 2em; }
+    h2 { border-bottom: 1px solid #ccc; padding-bottom: 0.3em; }
+    ul { list-style: none; padding: 0; }
+    li { margin: 0.5em 0; }
+    .btn { background: #007bff; color: white; border: none; padding: 0.5em 1em; border-radius: 4px; cursor: pointer; }
+    .btn.danger { background: #dc3545; }
+    .stat-grid { display: flex; gap: 1em; flex-wrap: wrap; }
+    .stat { flex: 1 1 30%; background: #f0f0f0; padding: 1em; border-radius: 6px; text-align: center; }
+    .nav-links a { margin-right: 1em; text-decoration: none; color: #007bff; }
+    .profile-pic { width: 80px; height: 80px; border-radius: 50%; background: #ccc; display: inline-block; }
+    .flex-header { display: flex; align-items: center; justify-content: space-between; }
+    .group-link, .issue-link { color: #007bff; text-decoration: none; }
+  </style>
 </head>
 <body>
+
   <header>
-    <h1>Welcome to Your Profile</h1>
+    <div class="flex-header">
+      <h1>Your Profile</h1>
+      <button class="btn danger" id="logoutBtn">Log Out</button>
+    </div>
   </header>
 
   <main>
-    <div id="profile-container">
-      <p><strong>Username:</strong> <span id="username"></span></p>
-      <p><strong>Email:</strong> <span id="email"></span></p>
-      <button id="logoutBtn">Log Out</button>
-    </div>
+    <section id="user-info">
+      <h2>Basic Info</h2>
+      <div>
+        <div class="profile-pic" title="Profile Picture (upload feature pending)"></div>
+        <p><strong>Username:</strong> <span id="username">Loading...</span></p>
+        <p><strong>Email:</strong> <span id="email">Loading...</span></p>
+        <button class="btn">Edit Profile (coming soon)</button>
+      </div>
+    </section>
+
+    <section id="user-stats">
+      <h2>Your Activity</h2>
+      <div class="stat-grid">
+        <div class="stat"><strong id="issuesReported">0</strong><br>Issues Reported</div>
+        <div class="stat"><strong id="commentsMade">0</strong><br>Comments Made</div>
+        <div class="stat"><strong id="groupsJoined">0</strong><br>Groups Joined</div>
+        <div class="stat"><strong id="upvotesGiven">0</strong><br>Upvotes Given</div>
+      </div>
+    </section>
+
+    <section id="achievements">
+      <h2>Achievements</h2>
+      <ul>
+        <li>🏅 First Report Submitted</li>
+        <li>💬 Active Contributor (10+ comments)</li>
+        <li>🌟 Community Builder (joined 2+ groups)</li>
+      </ul>
+    </section>
+
+    <section id="subscriptions">
+      <h2>Subscribed Issues</h2>
+      <ul id="subscriptionsList">
+        <li><a class="issue-link" href="issue123.html">Broken Streetlight on Main St</a> <button class="btn danger">Unsubscribe</button></li>
+        <li><a class="issue-link" href="issue456.html">Overflowing Trash Bins Near Park</a> <button class="btn danger">Unsubscribe</button></li>
+      </ul>
+    </section>
+
+    <section id="groups">
+      <h2>Your Community Groups</h2>
+      <ul id="groupList">
+        <li><a class="group-link" href="group-cleanstreets.html">Clean Streets Initiative</a></li>
+        <li><a class="group-link" href="group-renovation.html">Park Renovation Volunteers</a></li>
+      </ul>
+    </section>
+
+    <section id="notifications">
+      <h2>Notification Preferences</h2>
+      <p>🔔 Email Notifications: <strong>Enabled</strong> (feature pending)</p>
+      <button class="btn">Manage Notifications (coming soon)</button>
+    </section>
+
+    <section id="nav">
+      <h2>Quick Navigation</h2>
+      <div class="nav-links">
+        <a href="report.html">➕ Report an Issue</a>
+        <a href="issues.html">📋 View All Issues</a>
+        <a href="groups.html">👥 Community Groups</a>
+        <a href="forum.html">💬 Discussion Board</a>
+      </div>
+    </section>
   </main>
 
-  <script>
-    // Load user info from localStorage
-    const user = JSON.parse(localStorage.getItem('currentUser'));
-    const usernameEl = document.getElementById('username');
-    const emailEl = document.getElementById('email');
+  <footer>
+    <p>&copy; 2025 MuniConnect Platform</p>
+  </footer>
 
-    if (user) {
-      usernameEl.textContent = user.username || 'N/A';
-      emailEl.textContent = user.email || 'N/A';
-    } else {
-      alert('You are not logged in. Redirecting to login page...');
+  <script>
+    const user = JSON.parse(localStorage.getItem('currentUser'));
+    if (!user) {
+      alert('Not logged in. Redirecting...');
       window.location.href = 'login.html';
+    } else {
+      document.getElementById('username').textContent = user.username || 'N/A';
+      document.getElementById('email').textContent = user.email || 'N/A';
     }
+
+    // Example stats (you can replace these with real dynamic values)
+    document.getElementById('issuesReported').textContent = 4;
+    document.getElementById('commentsMade').textContent = 12;
+    document.getElementById('groupsJoined').textContent = 2;
+    document.getElementById('upvotesGiven').textContent = 18;
 
     document.getElementById('logoutBtn').addEventListener('click', () => {
       localStorage.removeItem('currentUser');
