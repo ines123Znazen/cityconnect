@@ -54,32 +54,22 @@
 
     <section id="achievements">
       <h2>Achievements</h2>
-      <ul>
-        <li>🏅 First Report Submitted</li>
-        <li>💬 Active Contributor (10+ comments)</li>
-        <li>🌟 Community Builder (joined 2+ groups)</li>
-      </ul>
+      <ul id="achievementsList"></ul>
     </section>
 
     <section id="subscriptions">
       <h2>Subscribed Issues</h2>
-      <ul id="subscriptionsList">
-        <li><a class="issue-link" href="issue123.html">Broken Streetlight on Main St</a> <button class="btn danger">Unsubscribe</button></li>
-        <li><a class="issue-link" href="issue456.html">Overflowing Trash Bins Near Park</a> <button class="btn danger">Unsubscribe</button></li>
-      </ul>
+      <ul id="subscriptionsList"></ul>
     </section>
 
     <section id="groups">
       <h2>Your Community Groups</h2>
-      <ul id="groupList">
-        <li><a class="group-link" href="group-cleanstreets.html">Clean Streets Initiative</a></li>
-        <li><a class="group-link" href="group-renovation.html">Park Renovation Volunteers</a></li>
-      </ul>
+      <ul id="groupList"></ul>
     </section>
 
     <section id="notifications">
       <h2>Notification Preferences</h2>
-      <p>🔔 Email Notifications: <strong>Enabled</strong> (feature pending)</p>
+      <p>🔔 Email Notifications: <strong id="notifStatus">Unknown</strong></p>
       <button class="btn">Manage Notifications (coming soon)</button>
     </section>
 
@@ -104,15 +94,43 @@
       alert('Not logged in. Redirecting...');
       window.location.href = 'login.html';
     } else {
+      // Basic info
       document.getElementById('username').textContent = user.username || 'N/A';
       document.getElementById('email').textContent = user.email || 'N/A';
-    }
 
-    // Example stats (you can replace these with real dynamic values)
-    document.getElementById('issuesReported').textContent = 4;
-    document.getElementById('commentsMade').textContent = 12;
-    document.getElementById('groupsJoined').textContent = 2;
-    document.getElementById('upvotesGiven').textContent = 18;
+      // Stats
+      document.getElementById('issuesReported').textContent = user.stats.issuesReported || 0;
+      document.getElementById('commentsMade').textContent = user.stats.commentsMade || 0;
+      document.getElementById('groupsJoined').textContent = user.stats.groupsJoined || 0;
+      document.getElementById('upvotesGiven').textContent = user.stats.upvotesGiven || 0;
+
+      // Achievements
+      const achievementsList = document.getElementById('achievementsList');
+      user.achievements.forEach(a => {
+        const li = document.createElement('li');
+        li.textContent = a;
+        achievementsList.appendChild(li);
+      });
+
+      // Subscriptions
+      const subsList = document.getElementById('subscriptionsList');
+      user.subscriptions.forEach(issue => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a class="issue-link" href="${issue.link}">${issue.title}</a> <button class="btn danger">Unsubscribe</button>`;
+        subsList.appendChild(li);
+      });
+
+      // Groups
+      const groupList = document.getElementById('groupList');
+      user.groups.forEach(group => {
+        const li = document.createElement('li');
+        li.innerHTML = `<a class="group-link" href="${group.link}">${group.name}</a>`;
+        groupList.appendChild(li);
+      });
+
+      // Notification status
+      document.getElementById('notifStatus').textContent = user.notifications.email ? "Enabled" : "Disabled";
+    }
 
     document.getElementById('logoutBtn').addEventListener('click', () => {
       localStorage.removeItem('currentUser');
