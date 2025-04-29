@@ -6,33 +6,119 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portail Communautaire</title>
   <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    body { font-family: sans-serif; margin: 0; padding: 0; background: #f9f9f9; }
+    header, footer { background: #333; color: white; padding: 1em; }
+    .logo { font-weight: bold; font-size: 1.2em; }
+    nav a { margin-left: 1em; color: white; text-decoration: none; }
+    .container { padding: 2em; max-width: 1000px; margin: auto; }
+    .section { margin-top: 2em; }
+    .card-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); gap: 1em; }
+    .card { background: white; padding: 1em; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.05); }
+    .card h3 { margin-top: 0; }
+    .btn { padding: 0.5em 1em; background: #007bff; color: white; text-decoration: none; border-radius: 4px; display: inline-block; }
+    .podcast { background: #eee; padding: 1em; border-radius: 8px; }
+    .news-item { margin-bottom: 1em; }
+  </style>
 </head>
 
 <body>
-  <!-- Navbar -->
   <header>
-    <div class="logo">
-      <strong>Portail Communautaire</strong>
-    </div>
+    <div class="logo">Portail Communautaire</div>
     <nav id="navbar">
-      <!-- Default buttons when not logged in -->
       <a href="signup.html" id="signup-btn">S'inscrire</a>
       <a href="login.html" id="login-btn">Se connecter</a>
-
-      <!-- Buttons when logged in -->
       <a href="profile.html" id="profile-btn" style="display: none;">Profil</a>
       <a href="#" id="logout-btn" style="display: none;">Se déconnecter</a>
     </nav>
   </header>
 
   <div class="container">
-    <h1>Bienvenue sur le Portail Communautaire</h1>
-    <p>Commencez à interagir avec votre communauté dès maintenant.</p>
+    <h1 id="welcome-message">Bienvenue sur le Portail Communautaire</h1>
+    <p>Un espace pour signaler des problèmes, échanger des idées, et collaborer avec votre communauté locale.</p>
+
+    <div class="section card-grid">
+      <div class="card">
+        <h3>📢 Signalement</h3>
+        <p>Signalez un problème local (infrastructure, propreté, sécurité...).</p>
+        <a class="btn" href="report.html">Signaler un problème</a>
+      </div>
+      <div class="card">
+        <h3>💬 Forum</h3>
+        <p>Participez aux discussions de votre quartier.</p>
+        <a class="btn" href="forum.html">Aller au forum</a>
+      </div>
+      <div class="card">
+        <h3>📋 Suivi des problèmes</h3>
+        <p>Suivez l'état et l'avancement des problèmes signalés.</p>
+        <a class="btn" href="issues.html">Voir les problèmes</a>
+      </div>
+      <div class="card">
+        <h3>📢 Annonces</h3>
+        <div id="announcements"></div>
+      </div>
+      <div class="card">
+        <h3>🎧 Podcast de la semaine</h3>
+        <div class="podcast">
+          <p><strong>Résumé audio :</strong></p>
+          <audio controls>
+            <source src="media/community-update.mp3" type="audio/mpeg">
+            Votre navigateur ne supporte pas l'audio.
+          </audio>
+        </div>
+      </div>
+      <div class="card">
+        <h3>🔍 Rechercher</h3>
+        <input type="text" placeholder="Rechercher un problème ou une discussion" style="width: 100%; padding: 0.5em;" />
+      </div>
+    </div>
+
+    <div class="section">
+      <h2>📌 Problèmes récents</h2>
+      <ul id="recent-issues"></ul>
+    </div>
+
+    <div class="section">
+      <h2>👥 Groupes populaires</h2>
+      <ul id="popular-groups"></ul>
+    </div>
   </div>
 
-  <!-- Link to JS files -->
-  <script src="js/populate-localstorage.js"></script>
-  <script src="js/main.js"></script>
-</body>
+  <footer>
+    <p>&copy; 2025 Portail Communautaire</p>
+  </footer>
 
+  <script src="js/main.js"></script>
+  <script>
+    const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+    if (currentUser) {
+      document.getElementById('welcome-message').textContent = "Bienvenue, " + currentUser.username + " 👋";
+    }
+
+    const announcements = JSON.parse(localStorage.getItem('announcements')) || [];
+    const annContainer = document.getElementById('announcements');
+    announcements.forEach(a => {
+      const div = document.createElement('div');
+      div.classList.add('news-item');
+      div.innerHTML = `<strong>${a.title}</strong><br><small>${a.date}</small><p>${a.content}</p>`;
+      annContainer.appendChild(div);
+    });
+
+    const issues = JSON.parse(localStorage.getItem('issues')) || [];
+    const issueList = document.getElementById('recent-issues');
+    issues.slice(0, 5).forEach(issue => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${issue.link}">${issue.title}</a> — ${issue.category}`;
+      issueList.appendChild(li);
+    });
+
+    const groups = JSON.parse(localStorage.getItem('groups')) || [];
+    const groupList = document.getElementById('popular-groups');
+    groups.slice(0, 5).forEach(group => {
+      const li = document.createElement('li');
+      li.innerHTML = `<a href="${group.link}">${group.name}</a> — ${group.description}`;
+      groupList.appendChild(li);
+    });
+  </script>
+</body>
 </html>
