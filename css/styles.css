@@ -1,3 +1,5 @@
+/* Base styles for the desktop version */
+
 body {
   margin: 0;
   font-family: sans-serif;
@@ -11,6 +13,13 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
+}
+
+nav {
+  display: flex;
+  justify-content: flex-end;
+  flex: 1;
 }
 
 nav a {
@@ -60,4 +69,74 @@ nav #auth button {
 h2 {
   margin-top: 2rem;
   color: #333;
+}
+
+/* Mobile responsive design */
+
+@media (max-width: 768px) {
+  header {
+    padding: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav {
+    width: 100%;
+    justify-content: space-between;
+    margin-top: 1rem;
+  }
+
+  nav a {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+
+  .container {
+    padding: 1rem;
+    max-width: 100%;
+  }
+
+  .hero {
+    padding: 1.5rem;
+  }
+
+  .card {
+    padding: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.25rem;
+  }
+}
+
+/* Small screen adjustments (e.g., smartphones in portrait mode) */
+
+@media (max-width: 480px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  nav a {
+    margin-top: 0.5rem;
+    margin-left: 0;
+  }
+
+  header div {
+    font-size: 1.5rem;
+  }
+
+  .hero {
+    padding: 1rem;
+  }
+
+  .card {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
 }
