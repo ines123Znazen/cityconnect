@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signaler un Problème</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="logo">
+      <strong>Portail Communautaire</strong>
+    </div>
+    <nav id="navbar">
+      <a href="index.html">Accueil</a>
+      <a href="profile.html" id="profile-btn" style="display: none;">Profil</a>
+      <a href="login.html" id="login-btn">Connexion</a>
+      <a href="signup.html" id="signup-btn">Inscription</a>
+      <a href="#" id="logout-btn" style="display: none;">Déconnexion</a>
+    </nav>
+  </header>
+
+  <div class="container">
+    <h1>Signaler un Nouveau Problème</h1>
+    <form id="report-form" class="form-card">
+      <label for="title">Titre du problème</label>
+      <input type="text" id="title" required placeholder="ex: Lampadaire cassé" />
+
+      <label for="description">Description</label>
+      <textarea id="description" rows="5" required placeholder="Décrivez le problème ici..."></textarea>
+
+      <label for="category">Catégorie</label>
+      <select id="category" required>
+        <option value="">-- Choisir une catégorie --</option>
+        <option value="Voirie">Voirie</option>
+        <option value="Éclairage">Éclairage</option>
+        <option value="Propreté">Propreté</option>
+        <option value="Sécurité">Sécurité</option>
+        <option value="Autre">Autre</option>
+      </select>
+
+      <label for="media">Photo ou vidéo (optionnel)</label>
+      <input type="file" id="media" accept="image/*,video/*" />
+
+      <button type="submit">Soumettre</button>
+    </form>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const form = document.getElementById('report-form');
+      const currentUser = JSON.parse(localStorage.getItem('currentUser'));
+
+      if (!currentUser || !currentUser.username) {
+        alert("Vous devez être connecté pour signaler un problème.");
+        window.location.href = "login.html";
+        return;
+      }
+
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+
+        const title = document.getElementById('title').value.trim();
+        const description = document.getElementById('description').value.trim();
+        const category = document.getElementById('category').value;
+        const fileInput = document.getElementById('media');
+        const media = fileInput.files.length > 0 ? fileInput.files[0].name : null;
+
+        const issues = JSON.parse(localStorage.getItem('issues')) || [];
+
+        const newIssue = {
+          title,
+          description,
+          category,
+          media,
+          author: currentUser.username,
+          date: new Date().toISOString().split('T')[0],
+          comments: [],
+          upvotes: 0,
+          id: 'issue' + (issues.length + 1).toString().padStart(3, '0'),
+          link: 'issue' + (issues.length + 1).toString().padStart(3, '0') + '.html'
+        };
+
+        issues.push(newIssue);
+        localStorage.setItem('issues', JSON.stringify(issues));
+
+        // Update user's stats
+        const users = JSON.parse(localStorage.getItem('users'));
+        const userIndex = users.findIndex(u => u.username === currentUser.username);
+        if (userIndex !== -1) {
+          users[userIndex].stats.issuesReported += 1;
+          localStorage.setItem('users', JSON.stringify(users));
+          localStorage.setItem('currentUser', JSON.stringify(users[userIndex]));
+        }
+
+        alert("Problème signalé avec succès !");
+        window.location.href = "index.html";
+      });
+    });
+  </script>
+</body>
+
+</html>
