@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', function () {
       {
         username: 'admin',
         password: 'admin',
-        email: 'admin@muni.local',
+        email: 'admin@cityconnect.local',
         isAdmin: true,
         stats: {
           issuesReported: 10,
@@ -12,7 +12,7 @@ document.addEventListener('DOMContentLoaded', function () {
           groupsJoined: 1,
           upvotesGiven: 30
         },
-        achievements: ['👑 Admin Access'],
+        achievements: ['👑 Accès Admin'],
         subscriptions: [],
         groups: [
           { name: "Éco-Citoyens", link: "group-eco.html" }
@@ -33,17 +33,17 @@ document.addEventListener('DOMContentLoaded', function () {
           upvotesGiven: 18
         },
         achievements: [
-          "🏅 First Report Submitted",
-          "💬 Active Contributor (10+ comments)",
-          "🌟 Community Builder (joined 2+ groups)"
+          "🏅 Premier signalement",
+          "💬 Contributeur actif (10+ commentaires)",
+          "🌟 Bâtisseur communautaire (2 groupes rejoints)"
         ],
         subscriptions: [
-          { title: "Broken Streetlight on Main St", link: "issue123.html" },
-          { title: "Overflowing Trash Bins Near Park", link: "issue456.html" }
+          { title: "Lampadaire cassé", link: "issue002.html" },
+          { title: "Déchets débordants près du parc", link: "issue004.html" }
         ],
         groups: [
-          { name: "Clean Streets Initiative", link: "group-cleanstreets.html" },
-          { name: "Park Renovation Volunteers", link: "group-renovation.html" }
+          { name: "Initiative Rues Propres", link: "group-cleanstreets.html" },
+          { name: "Bénévoles rénovation du parc", link: "group-renovation.html" }
         ],
         notifications: {
           email: true
@@ -51,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function () {
       }
     ];
     localStorage.setItem('users', JSON.stringify(users));
-    console.log('LocalStorage populated with full-featured users.');
+    console.log('✅ Utilisateurs ajoutés au localStorage.');
   }
 
   if (!localStorage.getItem('currentUser')) {
@@ -60,8 +60,16 @@ document.addEventListener('DOMContentLoaded', function () {
 
   if (!localStorage.getItem('announcements')) {
     localStorage.setItem('announcements', JSON.stringify([
-      { title: "Nouvelle poubelle intelligente installée", content: "Une nouvelle poubelle connectée a été installée au parc central.", date: "2025-04-01" },
-      { title: "Forum public samedi", content: "Venez rencontrer l'administration ce samedi pour discuter des projets.", date: "2025-04-15" }
+      {
+        title: "Nouvelle poubelle intelligente installée",
+        content: "Une nouvelle poubelle connectée a été installée au parc central.",
+        date: "2025-04-01"
+      },
+      {
+        title: "Forum public samedi",
+        content: "Venez rencontrer l'administration ce samedi pour discuter des projets.",
+        date: "2025-04-15"
+      }
     ]));
   }
 
@@ -69,14 +77,47 @@ document.addEventListener('DOMContentLoaded', function () {
     localStorage.setItem('issues', JSON.stringify([
       { title: "Nid de poule rue de la Paix", link: "issue001.html", category: "Voirie" },
       { title: "Lampadaire cassé", link: "issue002.html", category: "Éclairage" },
-      { title: "Graffiti sur le mur", link: "issue003.html", category: "Propreté" }
+      { title: "Graffiti sur le mur", link: "issue003.html", category: "Propreté" },
+      { title: "Déchets débordants près du parc", link: "issue004.html", category: "Propreté" }
     ]));
   }
 
   if (!localStorage.getItem('groups')) {
     localStorage.setItem('groups', JSON.stringify([
-      { name: "Éco-Citoyens", link: "group-eco.html", description: "Sensibilisation écologique locale" },
-      { name: "Sécurité Quartier Nord", link: "group-secu.html", description: "Veille citoyenne dans le quartier nord" }
+      {
+        name: "Éco-Citoyens",
+        link: "group-eco.html",
+        description: "Sensibilisation écologique locale"
+      },
+      {
+        name: "Sécurité Quartier Nord",
+        link: "group-secu.html",
+        description: "Veille citoyenne dans le quartier nord"
+      },
+      {
+        name: "Initiative Rues Propres",
+        link: "group-cleanstreets.html",
+        description: "Mobilisation pour garder nos rues propres"
+      }
     ]));
   }
+
+  if (!localStorage.getItem('forumPosts')) {
+    localStorage.setItem('forumPosts', JSON.stringify([
+      {
+        title: "Problème de stationnement dans le centre-ville",
+        content: "Il devient difficile de trouver une place de parking, surtout les week-ends.",
+        author: "johndoe",
+        timestamp: Date.now() - 86400000
+      },
+      {
+        title: "Idées pour les animations estivales ?",
+        content: "Quels événements aimeriez-vous voir cet été ?",
+        author: "admin",
+        timestamp: Date.now() - 43200000
+      }
+    ]));
+  }
+
+  console.log('✅ LocalStorage initialisé avec toutes les données nécessaires.');
 });

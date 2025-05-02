@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Signalements - CityConnect</title>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="logo">
+      <strong>CityConnect</strong>
+    </div>
+    <nav id="navbar">
+      <a href="index.html">Accueil</a>
+      <a href="forum.html">Forum</a>
+      <a href="issues.html">Signalements</a>
+      <a href="profile.html" id="profile-btn" style="display: none;">Profil</a>
+      <button id="logout-btn" style="display: none;">Déconnexion</button>
+      <a href="signup.html" id="signup-btn">Inscription</a>
+      <a href="login.html" id="login-btn">Connexion</a>
+    </nav>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <h1>Signalements de la communauté</h1>
+
+    <section id="issue-list">
+      <h2>Problèmes signalés</h2>
+      <div id="issues-container">
+        <!-- Injected via issues.js -->
+      </div>
+    </section>
+
+    <section id="report-new-issue">
+      <h2>Signaler un nouveau problème</h2>
+      <p>(Fonctionnalité à venir)</p>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/issues.js"></script>
+</body>
+
+</html>

@@ -109,3 +109,16 @@ form.form-card select {
   font-family: inherit;
 }
 
+.post {
+  border: 1px solid #ccc;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background: #f9f9f9;
+}
+
+.author {
+  font-size: 0.9rem;
+  color: #666;
+  margin-top: 0.5rem;
+}

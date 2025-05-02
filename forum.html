@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Forum - CityConnect</title>
+  <link rel="stylesheet" href="css/styles.css" />
+  <link rel="stylesheet" href="css/forum.css" />
+</head>
+
+<body>
+  <!-- Navbar -->
+  <header>
+    <div class="logo">
+      <strong>CityConnect</strong>
+    </div>
+    <nav id="navbar">
+      <a href="index.html">Accueil</a>
+      <a href="forum.html">Forum</a>
+      <a href="profile.html" id="profile-btn" style="display: none;">Profil</a>
+      <button id="logout-btn" style="display: none;">Déconnexion</button>
+      <a href="signup.html" id="signup-btn">Inscription</a>
+      <a href="login.html" id="login-btn">Connexion</a>
+    </nav>
+
+  </header>
+
+  <!-- Forum Container -->
+  <main class="container">
+    <h1>Forum Communautaire</h1>
+
+    <section id="new-post-section">
+      <h2>Nouvelle Discussion</h2>
+      <form id="new-post-form">
+        <input type="text" id="post-title" placeholder="Titre de la discussion" required />
+        <textarea id="post-content" placeholder="Contenu..." required></textarea>
+        <button type="submit">Publier</button>
+      </form>
+    </section>
+
+    <section id="posts-section">
+      <h2>Discussions Existantes</h2>
+      <div id="forum-posts">
+        <!-- Les messages seront affichés ici par forum.js -->
+      </div>
+    </section>
+  </main>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+  <script src="js/forum.js"></script>
+</body>
+
+</html>
