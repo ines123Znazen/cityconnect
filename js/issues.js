@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const issues = JSON.parse(localStorage.getItem('issues')) || [];
 
   if (issues.length === 0) {
-    container.innerHTML = "<p>Aucun problème signalé pour l'instant.</p>";
+    container.innerHTML = "<p>Aucun dysfonctionnement signalé pour l'instant.</p>";
     return;
   }
 
